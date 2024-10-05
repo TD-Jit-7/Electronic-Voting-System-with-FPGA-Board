@@ -1,0 +1,1074 @@
+Classic Timing Analyzer report for votingMachine
+Sun Sep 10 18:39:49 2023
+Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Clock Setup: 'clock'
+  6. tsu
+  7. tco
+  8. tpd
+  9. th
+ 10. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2008 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                                ;
++------------------------------+-------+---------------+----------------------------------+--------------------------------+--------------------------------------------------------------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From                           ; To                                                                                   ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+--------------------------------+--------------------------------------------------------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 67.500 ns                        ; voter_id[3]                    ; buttonControl:bc3|valid_vote                                                         ; --         ; clock    ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 86.100 ns                        ; modeControl:MC|num[4]          ; digit0[0]                                                                            ; clock      ; --       ; 0            ;
+; Worst-case tpd               ; N/A   ; None          ; 74.600 ns                        ; voter_id[3]                    ; already_voted                                                                        ; --         ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -5.000 ns                        ; reset                          ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[6] ; --         ; clock    ; 0            ;
+; Clock Setup: 'clock'         ; N/A   ; None          ; 20.37 MHz ( period = 49.100 ns ) ; authentication:auth|voted[245] ; buttonControl:bc3|valid_vote                                                         ; clock      ; clock    ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                                ;                                                                                      ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+--------------------------------+--------------------------------------------------------------------------------------+------------+----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                           ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                              ; Setting            ; From ; To ; Entity Name ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                         ; EPF10K70RC240-4    ;      ;    ;             ;
+; Timing Models                                                       ; Final              ;      ;    ;             ;
+; Default hold multicycle                                             ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                           ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                              ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                      ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                    ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                               ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                             ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                    ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                       ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                   ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                   ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node               ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                               ; 10                 ;      ;    ;             ;
+; Number of paths to report                                           ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                        ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                              ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                          ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                        ; Off                ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis      ; Off                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                          ; Near End           ;      ;    ;             ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clock           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clock'                                                                                                                                                                                                                                                      ;
++-----------------------------------------+-----------------------------------------------------+--------------------------------+------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                           ; To                           ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+--------------------------------+------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 20.37 MHz ( period = 49.100 ns )                    ; authentication:auth|voted[245] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 45.100 ns               ;
+; N/A                                     ; 20.49 MHz ( period = 48.800 ns )                    ; authentication:auth|voted[247] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.800 ns               ;
+; N/A                                     ; 20.49 MHz ( period = 48.800 ns )                    ; authentication:auth|voted[253] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.800 ns               ;
+; N/A                                     ; 20.53 MHz ( period = 48.700 ns )                    ; authentication:auth|voted[245] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.700 ns               ;
+; N/A                                     ; 20.62 MHz ( period = 48.500 ns )                    ; authentication:auth|voted[255] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.500 ns               ;
+; N/A                                     ; 20.66 MHz ( period = 48.400 ns )                    ; authentication:auth|voted[247] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.400 ns               ;
+; N/A                                     ; 20.66 MHz ( period = 48.400 ns )                    ; authentication:auth|voted[253] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.400 ns               ;
+; N/A                                     ; 20.70 MHz ( period = 48.300 ns )                    ; authentication:auth|voted[245] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.300 ns               ;
+; N/A                                     ; 20.79 MHz ( period = 48.100 ns )                    ; authentication:auth|voted[255] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.100 ns               ;
+; N/A                                     ; 20.83 MHz ( period = 48.000 ns )                    ; authentication:auth|voted[247] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.000 ns               ;
+; N/A                                     ; 20.83 MHz ( period = 48.000 ns )                    ; authentication:auth|voted[253] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 44.000 ns               ;
+; N/A                                     ; 20.88 MHz ( period = 47.900 ns )                    ; authentication:auth|voted[199] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.900 ns               ;
+; N/A                                     ; 20.96 MHz ( period = 47.700 ns )                    ; authentication:auth|voted[255] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.700 ns               ;
+; N/A                                     ; 21.01 MHz ( period = 47.600 ns )                    ; authentication:auth|voted[207] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.600 ns               ;
+; N/A                                     ; 21.05 MHz ( period = 47.500 ns )                    ; authentication:auth|voted[199] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.500 ns               ;
+; N/A                                     ; 21.14 MHz ( period = 47.300 ns )                    ; authentication:auth|voted[125] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.300 ns               ;
+; N/A                                     ; 21.19 MHz ( period = 47.200 ns )                    ; authentication:auth|voted[207] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.200 ns               ;
+; N/A                                     ; 21.23 MHz ( period = 47.100 ns )                    ; authentication:auth|voted[199] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.100 ns               ;
+; N/A                                     ; 21.28 MHz ( period = 47.000 ns )                    ; authentication:auth|voted[127] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 43.000 ns               ;
+; N/A                                     ; 21.32 MHz ( period = 46.900 ns )                    ; authentication:auth|voted[125] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.900 ns               ;
+; N/A                                     ; 21.37 MHz ( period = 46.800 ns )                    ; authentication:auth|voted[207] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.800 ns               ;
+; N/A                                     ; 21.46 MHz ( period = 46.600 ns )                    ; authentication:auth|voted[235] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.600 ns               ;
+; N/A                                     ; 21.46 MHz ( period = 46.600 ns )                    ; authentication:auth|voted[127] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.600 ns               ;
+; N/A                                     ; 21.51 MHz ( period = 46.500 ns )                    ; authentication:auth|voted[125] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.500 ns               ;
+; N/A                                     ; 21.60 MHz ( period = 46.300 ns )                    ; authentication:auth|voted[239] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.300 ns               ;
+; N/A                                     ; 21.65 MHz ( period = 46.200 ns )                    ; authentication:auth|voted[175] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.200 ns               ;
+; N/A                                     ; 21.65 MHz ( period = 46.200 ns )                    ; authentication:auth|voted[235] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.200 ns               ;
+; N/A                                     ; 21.65 MHz ( period = 46.200 ns )                    ; authentication:auth|voted[127] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 42.200 ns               ;
+; N/A                                     ; 21.79 MHz ( period = 45.900 ns )                    ; authentication:auth|voted[121] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.900 ns               ;
+; N/A                                     ; 21.79 MHz ( period = 45.900 ns )                    ; authentication:auth|voted[191] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.900 ns               ;
+; N/A                                     ; 21.79 MHz ( period = 45.900 ns )                    ; authentication:auth|voted[246] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.900 ns               ;
+; N/A                                     ; 21.79 MHz ( period = 45.900 ns )                    ; authentication:auth|voted[239] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.900 ns               ;
+; N/A                                     ; 21.83 MHz ( period = 45.800 ns )                    ; authentication:auth|voted[175] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.800 ns               ;
+; N/A                                     ; 21.83 MHz ( period = 45.800 ns )                    ; authentication:auth|voted[235] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.800 ns               ;
+; N/A                                     ; 21.88 MHz ( period = 45.700 ns )                    ; authentication:auth|voted[222] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.700 ns               ;
+; N/A                                     ; 21.93 MHz ( period = 45.600 ns )                    ; authentication:auth|voted[123] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.600 ns               ;
+; N/A                                     ; 21.93 MHz ( period = 45.600 ns )                    ; authentication:auth|voted[244] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.600 ns               ;
+; N/A                                     ; 21.93 MHz ( period = 45.600 ns )                    ; authentication:auth|voted[254] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.600 ns               ;
+; N/A                                     ; 21.93 MHz ( period = 45.600 ns )                    ; authentication:auth|voted[242] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.600 ns               ;
+; N/A                                     ; 21.98 MHz ( period = 45.500 ns )                    ; authentication:auth|voted[121] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.500 ns               ;
+; N/A                                     ; 21.98 MHz ( period = 45.500 ns )                    ; authentication:auth|voted[191] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.500 ns               ;
+; N/A                                     ; 21.98 MHz ( period = 45.500 ns )                    ; authentication:auth|voted[246] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.500 ns               ;
+; N/A                                     ; 21.98 MHz ( period = 45.500 ns )                    ; authentication:auth|voted[239] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.500 ns               ;
+; N/A                                     ; 22.03 MHz ( period = 45.400 ns )                    ; authentication:auth|voted[110] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.400 ns               ;
+; N/A                                     ; 22.03 MHz ( period = 45.400 ns )                    ; authentication:auth|voted[223] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.400 ns               ;
+; N/A                                     ; 22.03 MHz ( period = 45.400 ns )                    ; authentication:auth|voted[175] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.400 ns               ;
+; N/A                                     ; 22.08 MHz ( period = 45.300 ns )                    ; authentication:auth|voted[97]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.300 ns               ;
+; N/A                                     ; 22.08 MHz ( period = 45.300 ns )                    ; authentication:auth|voted[154] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.300 ns               ;
+; N/A                                     ; 22.08 MHz ( period = 45.300 ns )                    ; authentication:auth|voted[252] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.300 ns               ;
+; N/A                                     ; 22.08 MHz ( period = 45.300 ns )                    ; authentication:auth|voted[243] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.300 ns               ;
+; N/A                                     ; 22.08 MHz ( period = 45.300 ns )                    ; authentication:auth|voted[222] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.300 ns               ;
+; N/A                                     ; 22.12 MHz ( period = 45.200 ns )                    ; authentication:auth|voted[167] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.200 ns               ;
+; N/A                                     ; 22.12 MHz ( period = 45.200 ns )                    ; authentication:auth|voted[123] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.200 ns               ;
+; N/A                                     ; 22.12 MHz ( period = 45.200 ns )                    ; authentication:auth|voted[244] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.200 ns               ;
+; N/A                                     ; 22.12 MHz ( period = 45.200 ns )                    ; authentication:auth|voted[254] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.200 ns               ;
+; N/A                                     ; 22.12 MHz ( period = 45.200 ns )                    ; authentication:auth|voted[242] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.200 ns               ;
+; N/A                                     ; 22.17 MHz ( period = 45.100 ns )                    ; authentication:auth|voted[111] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.100 ns               ;
+; N/A                                     ; 22.17 MHz ( period = 45.100 ns )                    ; authentication:auth|voted[174] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.100 ns               ;
+; N/A                                     ; 22.17 MHz ( period = 45.100 ns )                    ; authentication:auth|voted[121] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.100 ns               ;
+; N/A                                     ; 22.17 MHz ( period = 45.100 ns )                    ; authentication:auth|voted[191] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.100 ns               ;
+; N/A                                     ; 22.17 MHz ( period = 45.100 ns )                    ; authentication:auth|voted[246] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.100 ns               ;
+; N/A                                     ; 22.22 MHz ( period = 45.000 ns )                    ; authentication:auth|voted[106] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.000 ns               ;
+; N/A                                     ; 22.22 MHz ( period = 45.000 ns )                    ; authentication:auth|voted[99]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.000 ns               ;
+; N/A                                     ; 22.22 MHz ( period = 45.000 ns )                    ; authentication:auth|voted[186] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.000 ns               ;
+; N/A                                     ; 22.22 MHz ( period = 45.000 ns )                    ; authentication:auth|voted[110] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.000 ns               ;
+; N/A                                     ; 22.22 MHz ( period = 45.000 ns )                    ; authentication:auth|voted[223] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 41.000 ns               ;
+; N/A                                     ; 22.27 MHz ( period = 44.900 ns )                    ; authentication:auth|voted[183] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.900 ns               ;
+; N/A                                     ; 22.27 MHz ( period = 44.900 ns )                    ; authentication:auth|voted[97]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.900 ns               ;
+; N/A                                     ; 22.27 MHz ( period = 44.900 ns )                    ; authentication:auth|voted[154] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.900 ns               ;
+; N/A                                     ; 22.27 MHz ( period = 44.900 ns )                    ; authentication:auth|voted[252] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.900 ns               ;
+; N/A                                     ; 22.27 MHz ( period = 44.900 ns )                    ; authentication:auth|voted[243] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.900 ns               ;
+; N/A                                     ; 22.27 MHz ( period = 44.900 ns )                    ; authentication:auth|voted[222] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.900 ns               ;
+; N/A                                     ; 22.32 MHz ( period = 44.800 ns )                    ; authentication:auth|voted[190] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.800 ns               ;
+; N/A                                     ; 22.32 MHz ( period = 44.800 ns )                    ; authentication:auth|voted[167] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.800 ns               ;
+; N/A                                     ; 22.32 MHz ( period = 44.800 ns )                    ; authentication:auth|voted[123] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.800 ns               ;
+; N/A                                     ; 22.32 MHz ( period = 44.800 ns )                    ; authentication:auth|voted[244] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.800 ns               ;
+; N/A                                     ; 22.32 MHz ( period = 44.800 ns )                    ; authentication:auth|voted[254] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.800 ns               ;
+; N/A                                     ; 22.32 MHz ( period = 44.800 ns )                    ; authentication:auth|voted[242] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.800 ns               ;
+; N/A                                     ; 22.37 MHz ( period = 44.700 ns )                    ; authentication:auth|voted[107] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.700 ns               ;
+; N/A                                     ; 22.37 MHz ( period = 44.700 ns )                    ; authentication:auth|voted[233] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.700 ns               ;
+; N/A                                     ; 22.37 MHz ( period = 44.700 ns )                    ; authentication:auth|voted[200] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.700 ns               ;
+; N/A                                     ; 22.37 MHz ( period = 44.700 ns )                    ; authentication:auth|voted[5]   ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.700 ns               ;
+; N/A                                     ; 22.37 MHz ( period = 44.700 ns )                    ; authentication:auth|voted[111] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.700 ns               ;
+; N/A                                     ; 22.37 MHz ( period = 44.700 ns )                    ; authentication:auth|voted[174] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.700 ns               ;
+; N/A                                     ; 22.42 MHz ( period = 44.600 ns )                    ; authentication:auth|voted[106] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.600 ns               ;
+; N/A                                     ; 22.42 MHz ( period = 44.600 ns )                    ; authentication:auth|voted[99]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.600 ns               ;
+; N/A                                     ; 22.42 MHz ( period = 44.600 ns )                    ; authentication:auth|voted[186] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.600 ns               ;
+; N/A                                     ; 22.42 MHz ( period = 44.600 ns )                    ; authentication:auth|voted[110] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.600 ns               ;
+; N/A                                     ; 22.42 MHz ( period = 44.600 ns )                    ; authentication:auth|voted[223] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.600 ns               ;
+; N/A                                     ; 22.47 MHz ( period = 44.500 ns )                    ; authentication:auth|voted[183] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.500 ns               ;
+; N/A                                     ; 22.47 MHz ( period = 44.500 ns )                    ; authentication:auth|voted[97]  ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.500 ns               ;
+; N/A                                     ; 22.47 MHz ( period = 44.500 ns )                    ; authentication:auth|voted[154] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.500 ns               ;
+; N/A                                     ; 22.47 MHz ( period = 44.500 ns )                    ; authentication:auth|voted[252] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.500 ns               ;
+; N/A                                     ; 22.47 MHz ( period = 44.500 ns )                    ; authentication:auth|voted[243] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.500 ns               ;
+; N/A                                     ; 22.52 MHz ( period = 44.400 ns )                    ; authentication:auth|voted[118] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.400 ns               ;
+; N/A                                     ; 22.52 MHz ( period = 44.400 ns )                    ; authentication:auth|voted[93]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.400 ns               ;
+; N/A                                     ; 22.52 MHz ( period = 44.400 ns )                    ; authentication:auth|voted[237] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.400 ns               ;
+; N/A                                     ; 22.52 MHz ( period = 44.400 ns )                    ; authentication:auth|voted[204] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.400 ns               ;
+; N/A                                     ; 22.52 MHz ( period = 44.400 ns )                    ; authentication:auth|voted[7]   ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.400 ns               ;
+; N/A                                     ; 22.52 MHz ( period = 44.400 ns )                    ; authentication:auth|voted[190] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.400 ns               ;
+; N/A                                     ; 22.52 MHz ( period = 44.400 ns )                    ; authentication:auth|voted[167] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.400 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[240] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[26]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[107] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[233] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[200] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[5]   ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[111] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.57 MHz ( period = 44.300 ns )                    ; authentication:auth|voted[174] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.300 ns               ;
+; N/A                                     ; 22.62 MHz ( period = 44.200 ns )                    ; authentication:auth|voted[172] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.200 ns               ;
+; N/A                                     ; 22.62 MHz ( period = 44.200 ns )                    ; authentication:auth|voted[106] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.200 ns               ;
+; N/A                                     ; 22.62 MHz ( period = 44.200 ns )                    ; authentication:auth|voted[99]  ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.200 ns               ;
+; N/A                                     ; 22.62 MHz ( period = 44.200 ns )                    ; authentication:auth|voted[186] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.200 ns               ;
+; N/A                                     ; 22.68 MHz ( period = 44.100 ns )                    ; authentication:auth|voted[95]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.100 ns               ;
+; N/A                                     ; 22.68 MHz ( period = 44.100 ns )                    ; authentication:auth|voted[126] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.100 ns               ;
+; N/A                                     ; 22.68 MHz ( period = 44.100 ns )                    ; authentication:auth|voted[78]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.100 ns               ;
+; N/A                                     ; 22.68 MHz ( period = 44.100 ns )                    ; authentication:auth|voted[183] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.100 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[89]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[173] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[30]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[118] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[93]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[237] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[204] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[7]   ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.73 MHz ( period = 44.000 ns )                    ; authentication:auth|voted[190] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 40.000 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[188] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[230] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[229] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[58]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[240] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[26]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[107] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[233] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[200] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.78 MHz ( period = 43.900 ns )                    ; authentication:auth|voted[5]   ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.900 ns               ;
+; N/A                                     ; 22.83 MHz ( period = 43.800 ns )                    ; authentication:auth|voted[124] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.800 ns               ;
+; N/A                                     ; 22.83 MHz ( period = 43.800 ns )                    ; authentication:auth|voted[79]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.800 ns               ;
+; N/A                                     ; 22.83 MHz ( period = 43.800 ns )                    ; authentication:auth|voted[217] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.800 ns               ;
+; N/A                                     ; 22.83 MHz ( period = 43.800 ns )                    ; authentication:auth|voted[228] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.800 ns               ;
+; N/A                                     ; 22.83 MHz ( period = 43.800 ns )                    ; authentication:auth|voted[172] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.800 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[91]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[189] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[250] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[23]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[10]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[95]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[126] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.88 MHz ( period = 43.700 ns )                    ; authentication:auth|voted[78]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.700 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[153] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[209] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[238] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[202] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[62]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[55]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[89]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[173] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[30]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[118] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[93]  ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[237] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[204] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.94 MHz ( period = 43.600 ns )                    ; authentication:auth|voted[7]   ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.600 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[219] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[225] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[236] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[188] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[230] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[229] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[58]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[240] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 22.99 MHz ( period = 43.500 ns )                    ; authentication:auth|voted[26]  ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.500 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[231] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[251] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[31]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[9]   ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[11]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[124] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[79]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[217] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[228] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.04 MHz ( period = 43.400 ns )                    ; authentication:auth|voted[172] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.400 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[101] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[185] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[155] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[211] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[206] ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[63]  ; buttonControl:bc3|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[91]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[189] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[250] ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[23]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[10]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[95]  ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[126] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.09 MHz ( period = 43.300 ns )                    ; authentication:auth|voted[78]  ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.300 ns               ;
+; N/A                                     ; 23.15 MHz ( period = 43.200 ns )                    ; authentication:auth|voted[62]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.200 ns               ;
+; N/A                                     ; 23.15 MHz ( period = 43.200 ns )                    ; authentication:auth|voted[55]  ; buttonControl:bc1|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.200 ns               ;
+; N/A                                     ; 23.15 MHz ( period = 43.200 ns )                    ; authentication:auth|voted[89]  ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.200 ns               ;
+; N/A                                     ; 23.15 MHz ( period = 43.200 ns )                    ; authentication:auth|voted[173] ; buttonControl:bc2|valid_vote ; clock      ; clock    ; None                        ; None                      ; 39.200 ns               ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                ;                              ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+--------------------------------+------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                                                                                  ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------+--------------------------------+----------+
+; Slack                                   ; Required tsu                                        ; Actual tsu ; From        ; To                             ; To Clock ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------+--------------------------------+----------+
+; N/A                                     ; None                                                ; 67.500 ns  ; voter_id[3] ; buttonControl:bc3|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 67.100 ns  ; voter_id[3] ; buttonControl:bc1|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 66.700 ns  ; voter_id[3] ; buttonControl:bc2|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 63.300 ns  ; voter_id[4] ; buttonControl:bc3|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 62.900 ns  ; voter_id[4] ; buttonControl:bc1|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 62.500 ns  ; voter_id[4] ; buttonControl:bc2|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 61.200 ns  ; voter_id[2] ; buttonControl:bc3|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 61.100 ns  ; voter_id[5] ; buttonControl:bc3|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 60.800 ns  ; voter_id[2] ; buttonControl:bc1|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 60.700 ns  ; voter_id[5] ; buttonControl:bc1|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 60.400 ns  ; voter_id[2] ; buttonControl:bc2|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 60.300 ns  ; voter_id[5] ; buttonControl:bc2|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 59.300 ns  ; voter_id[1] ; buttonControl:bc3|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 59.300 ns  ; voter_id[0] ; buttonControl:bc3|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 58.900 ns  ; voter_id[1] ; buttonControl:bc1|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 58.900 ns  ; voter_id[0] ; buttonControl:bc1|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 58.500 ns  ; voter_id[1] ; buttonControl:bc2|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 58.500 ns  ; voter_id[0] ; buttonControl:bc2|valid_vote   ; clock    ;
+; N/A                                     ; None                                                ; 47.700 ns  ; voter_id[3] ; authentication:auth|voted[169] ; clock    ;
+; N/A                                     ; None                                                ; 47.700 ns  ; voter_id[3] ; authentication:auth|voted[25]  ; clock    ;
+; N/A                                     ; None                                                ; 47.700 ns  ; voter_id[3] ; authentication:auth|voted[9]   ; clock    ;
+; N/A                                     ; None                                                ; 47.400 ns  ; voter_id[3] ; authentication:auth|voted[57]  ; clock    ;
+; N/A                                     ; None                                                ; 47.100 ns  ; voter_id[3] ; authentication:auth|voted[41]  ; clock    ;
+; N/A                                     ; None                                                ; 46.800 ns  ; voter_id[3] ; authentication:auth|voted[201] ; clock    ;
+; N/A                                     ; None                                                ; 46.800 ns  ; voter_id[3] ; authentication:auth|voted[21]  ; clock    ;
+; N/A                                     ; None                                                ; 46.600 ns  ; voter_id[3] ; authentication:auth|voted[53]  ; clock    ;
+; N/A                                     ; None                                                ; 46.400 ns  ; voter_id[3] ; authentication:auth|voted[137] ; clock    ;
+; N/A                                     ; None                                                ; 46.400 ns  ; voter_id[3] ; authentication:auth|voted[43]  ; clock    ;
+; N/A                                     ; None                                                ; 46.200 ns  ; voter_id[3] ; authentication:auth|voted[148] ; clock    ;
+; N/A                                     ; None                                                ; 46.200 ns  ; voter_id[3] ; authentication:auth|voted[164] ; clock    ;
+; N/A                                     ; None                                                ; 46.200 ns  ; voter_id[3] ; authentication:auth|voted[180] ; clock    ;
+; N/A                                     ; None                                                ; 46.200 ns  ; voter_id[3] ; authentication:auth|voted[132] ; clock    ;
+; N/A                                     ; None                                                ; 46.200 ns  ; voter_id[3] ; authentication:auth|voted[37]  ; clock    ;
+; N/A                                     ; None                                                ; 46.200 ns  ; voter_id[3] ; authentication:auth|voted[59]  ; clock    ;
+; N/A                                     ; None                                                ; 45.900 ns  ; voter_id[3] ; authentication:auth|voted[171] ; clock    ;
+; N/A                                     ; None                                                ; 45.900 ns  ; voter_id[3] ; authentication:auth|voted[155] ; clock    ;
+; N/A                                     ; None                                                ; 45.900 ns  ; voter_id[3] ; authentication:auth|voted[187] ; clock    ;
+; N/A                                     ; None                                                ; 45.900 ns  ; voter_id[3] ; authentication:auth|voted[139] ; clock    ;
+; N/A                                     ; None                                                ; 45.900 ns  ; voter_id[3] ; authentication:auth|voted[197] ; clock    ;
+; N/A                                     ; None                                                ; 45.900 ns  ; voter_id[3] ; authentication:auth|voted[52]  ; clock    ;
+; N/A                                     ; None                                                ; 45.500 ns  ; voter_id[3] ; authentication:auth|voted[203] ; clock    ;
+; N/A                                     ; None                                                ; 45.500 ns  ; voter_id[3] ; authentication:auth|voted[27]  ; clock    ;
+; N/A                                     ; None                                                ; 45.400 ns  ; voter_id[3] ; authentication:auth|voted[149] ; clock    ;
+; N/A                                     ; None                                                ; 45.400 ns  ; voter_id[3] ; authentication:auth|voted[165] ; clock    ;
+; N/A                                     ; None                                                ; 45.400 ns  ; voter_id[3] ; authentication:auth|voted[181] ; clock    ;
+; N/A                                     ; None                                                ; 45.400 ns  ; voter_id[3] ; authentication:auth|voted[133] ; clock    ;
+; N/A                                     ; None                                                ; 45.300 ns  ; voter_id[3] ; authentication:auth|voted[233] ; clock    ;
+; N/A                                     ; None                                                ; 45.300 ns  ; voter_id[3] ; authentication:auth|voted[196] ; clock    ;
+; N/A                                     ; None                                                ; 45.300 ns  ; voter_id[3] ; authentication:auth|voted[36]  ; clock    ;
+; N/A                                     ; None                                                ; 45.300 ns  ; voter_id[3] ; authentication:auth|voted[20]  ; clock    ;
+; N/A                                     ; None                                                ; 45.000 ns  ; voter_id[3] ; authentication:auth|voted[11]  ; clock    ;
+; N/A                                     ; None                                                ; 44.700 ns  ; voter_id[3] ; authentication:auth|voted[107] ; clock    ;
+; N/A                                     ; None                                                ; 44.600 ns  ; voter_id[3] ; authentication:auth|voted[153] ; clock    ;
+; N/A                                     ; None                                                ; 44.600 ns  ; voter_id[3] ; authentication:auth|voted[185] ; clock    ;
+; N/A                                     ; None                                                ; 44.400 ns  ; voter_id[3] ; authentication:auth|voted[105] ; clock    ;
+; N/A                                     ; None                                                ; 44.300 ns  ; voter_id[3] ; authentication:auth|voted[235] ; clock    ;
+; N/A                                     ; None                                                ; 44.100 ns  ; voter_id[3] ; authentication:auth|voted[217] ; clock    ;
+; N/A                                     ; None                                                ; 44.100 ns  ; voter_id[3] ; authentication:auth|voted[5]   ; clock    ;
+; N/A                                     ; None                                                ; 44.000 ns  ; voter_id[3] ; authentication:auth|voted[4]   ; clock    ;
+; N/A                                     ; None                                                ; 43.600 ns  ; voter_id[3] ; authentication:auth|voted[219] ; clock    ;
+; N/A                                     ; None                                                ; 43.300 ns  ; voter_id[3] ; authentication:auth|voted[213] ; clock    ;
+; N/A                                     ; None                                                ; 42.900 ns  ; voter_id[3] ; authentication:auth|voted[212] ; clock    ;
+; N/A                                     ; None                                                ; 42.900 ns  ; voter_id[3] ; authentication:auth|voted[249] ; clock    ;
+; N/A                                     ; None                                                ; 42.800 ns  ; voter_id[3] ; authentication:auth|voted[229] ; clock    ;
+; N/A                                     ; None                                                ; 42.700 ns  ; voter_id[3] ; authentication:auth|voted[251] ; clock    ;
+; N/A                                     ; None                                                ; 42.400 ns  ; voter_id[3] ; authentication:auth|voted[101] ; clock    ;
+; N/A                                     ; None                                                ; 42.300 ns  ; voter_id[3] ; authentication:auth|voted[245] ; clock    ;
+; N/A                                     ; None                                                ; 42.200 ns  ; voter_id[3] ; authentication:auth|voted[244] ; clock    ;
+; N/A                                     ; None                                                ; 42.000 ns  ; voter_id[1] ; authentication:auth|voted[169] ; clock    ;
+; N/A                                     ; None                                                ; 42.000 ns  ; voter_id[1] ; authentication:auth|voted[25]  ; clock    ;
+; N/A                                     ; None                                                ; 42.000 ns  ; voter_id[1] ; authentication:auth|voted[9]   ; clock    ;
+; N/A                                     ; None                                                ; 41.900 ns  ; voter_id[3] ; authentication:auth|voted[228] ; clock    ;
+; N/A                                     ; None                                                ; 41.700 ns  ; voter_id[1] ; authentication:auth|voted[57]  ; clock    ;
+; N/A                                     ; None                                                ; 41.500 ns  ; voter_id[3] ; authentication:auth|voted[100] ; clock    ;
+; N/A                                     ; None                                                ; 41.500 ns  ; voter_id[4] ; authentication:auth|voted[94]  ; clock    ;
+; N/A                                     ; None                                                ; 41.500 ns  ; voter_id[4] ; authentication:auth|voted[93]  ; clock    ;
+; N/A                                     ; None                                                ; 41.500 ns  ; voter_id[4] ; authentication:auth|voted[95]  ; clock    ;
+; N/A                                     ; None                                                ; 41.500 ns  ; voter_id[4] ; authentication:auth|voted[92]  ; clock    ;
+; N/A                                     ; None                                                ; 41.400 ns  ; voter_id[1] ; authentication:auth|voted[41]  ; clock    ;
+; N/A                                     ; None                                                ; 41.300 ns  ; voter_id[3] ; authentication:auth|voted[246] ; clock    ;
+; N/A                                     ; None                                                ; 41.100 ns  ; voter_id[3] ; authentication:auth|voted[247] ; clock    ;
+; N/A                                     ; None                                                ; 41.100 ns  ; voter_id[1] ; authentication:auth|voted[201] ; clock    ;
+; N/A                                     ; None                                                ; 41.100 ns  ; voter_id[1] ; authentication:auth|voted[21]  ; clock    ;
+; N/A                                     ; None                                                ; 41.000 ns  ; voter_id[3] ; authentication:auth|voted[70]  ; clock    ;
+; N/A                                     ; None                                                ; 41.000 ns  ; voter_id[3] ; authentication:auth|voted[150] ; clock    ;
+; N/A                                     ; None                                                ; 41.000 ns  ; voter_id[3] ; authentication:auth|voted[166] ; clock    ;
+; N/A                                     ; None                                                ; 41.000 ns  ; voter_id[3] ; authentication:auth|voted[182] ; clock    ;
+; N/A                                     ; None                                                ; 41.000 ns  ; voter_id[3] ; authentication:auth|voted[134] ; clock    ;
+; N/A                                     ; None                                                ; 41.000 ns  ; voter_id[3] ; authentication:auth|voted[230] ; clock    ;
+; N/A                                     ; None                                                ; 40.900 ns  ; voter_id[3] ; authentication:auth|voted[86]  ; clock    ;
+; N/A                                     ; None                                                ; 40.900 ns  ; voter_id[1] ; authentication:auth|voted[53]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[3] ; authentication:auth|voted[118] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[3] ; authentication:auth|voted[151] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[3] ; authentication:auth|voted[167] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[3] ; authentication:auth|voted[183] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[3] ; authentication:auth|voted[135] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[3] ; authentication:auth|voted[22]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[0] ; authentication:auth|voted[169] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[0] ; authentication:auth|voted[25]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[0] ; authentication:auth|voted[9]   ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[87]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[90]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[89]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[91]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[88]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[126] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[125] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[127] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[124] ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[77]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[78]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[79]  ; clock    ;
+; N/A                                     ; None                                                ; 40.800 ns  ; voter_id[4] ; authentication:auth|voted[76]  ; clock    ;
+; N/A                                     ; None                                                ; 40.700 ns  ; voter_id[3] ; authentication:auth|voted[102] ; clock    ;
+; N/A                                     ; None                                                ; 40.700 ns  ; voter_id[1] ; authentication:auth|voted[137] ; clock    ;
+; N/A                                     ; None                                                ; 40.700 ns  ; voter_id[1] ; authentication:auth|voted[43]  ; clock    ;
+; N/A                                     ; None                                                ; 40.600 ns  ; voter_id[3] ; authentication:auth|voted[214] ; clock    ;
+; N/A                                     ; None                                                ; 40.600 ns  ; voter_id[3] ; authentication:auth|voted[215] ; clock    ;
+; N/A                                     ; None                                                ; 40.500 ns  ; voter_id[1] ; authentication:auth|voted[148] ; clock    ;
+; N/A                                     ; None                                                ; 40.500 ns  ; voter_id[1] ; authentication:auth|voted[164] ; clock    ;
+; N/A                                     ; None                                                ; 40.500 ns  ; voter_id[1] ; authentication:auth|voted[180] ; clock    ;
+; N/A                                     ; None                                                ; 40.500 ns  ; voter_id[1] ; authentication:auth|voted[132] ; clock    ;
+; N/A                                     ; None                                                ; 40.500 ns  ; voter_id[1] ; authentication:auth|voted[37]  ; clock    ;
+; N/A                                     ; None                                                ; 40.500 ns  ; voter_id[1] ; authentication:auth|voted[59]  ; clock    ;
+; N/A                                     ; None                                                ; 40.500 ns  ; voter_id[0] ; authentication:auth|voted[57]  ; clock    ;
+; N/A                                     ; None                                                ; 40.400 ns  ; voter_id[2] ; authentication:auth|voted[243] ; clock    ;
+; N/A                                     ; None                                                ; 40.300 ns  ; voter_id[2] ; authentication:auth|voted[3]   ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[1] ; authentication:auth|voted[171] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[1] ; authentication:auth|voted[155] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[1] ; authentication:auth|voted[187] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[1] ; authentication:auth|voted[139] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[1] ; authentication:auth|voted[197] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[1] ; authentication:auth|voted[52]  ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[0] ; authentication:auth|voted[41]  ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[4] ; authentication:auth|voted[122] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[4] ; authentication:auth|voted[121] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[4] ; authentication:auth|voted[123] ; clock    ;
+; N/A                                     ; None                                                ; 40.200 ns  ; voter_id[4] ; authentication:auth|voted[120] ; clock    ;
+; N/A                                     ; None                                                ; 40.100 ns  ; voter_id[2] ; authentication:auth|voted[99]  ; clock    ;
+; N/A                                     ; None                                                ; 40.100 ns  ; voter_id[4] ; authentication:auth|voted[119] ; clock    ;
+; N/A                                     ; None                                                ; 40.000 ns  ; voter_id[4] ; authentication:auth|voted[85]  ; clock    ;
+; N/A                                     ; None                                                ; 39.900 ns  ; voter_id[3] ; authentication:auth|voted[103] ; clock    ;
+; N/A                                     ; None                                                ; 39.900 ns  ; voter_id[0] ; authentication:auth|voted[201] ; clock    ;
+; N/A                                     ; None                                                ; 39.900 ns  ; voter_id[0] ; authentication:auth|voted[21]  ; clock    ;
+; N/A                                     ; None                                                ; 39.800 ns  ; voter_id[3] ; authentication:auth|voted[231] ; clock    ;
+; N/A                                     ; None                                                ; 39.800 ns  ; voter_id[1] ; authentication:auth|voted[203] ; clock    ;
+; N/A                                     ; None                                                ; 39.800 ns  ; voter_id[1] ; authentication:auth|voted[27]  ; clock    ;
+; N/A                                     ; None                                                ; 39.700 ns  ; voter_id[1] ; authentication:auth|voted[149] ; clock    ;
+; N/A                                     ; None                                                ; 39.700 ns  ; voter_id[1] ; authentication:auth|voted[165] ; clock    ;
+; N/A                                     ; None                                                ; 39.700 ns  ; voter_id[1] ; authentication:auth|voted[181] ; clock    ;
+; N/A                                     ; None                                                ; 39.700 ns  ; voter_id[1] ; authentication:auth|voted[133] ; clock    ;
+; N/A                                     ; None                                                ; 39.700 ns  ; voter_id[0] ; authentication:auth|voted[53]  ; clock    ;
+; N/A                                     ; None                                                ; 39.700 ns  ; voter_id[4] ; authentication:auth|voted[84]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[3] ; authentication:auth|voted[7]   ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[2] ; authentication:auth|voted[160] ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[2] ; authentication:auth|voted[144] ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[2] ; authentication:auth|voted[176] ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[2] ; authentication:auth|voted[128] ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[2] ; authentication:auth|voted[34]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[1] ; authentication:auth|voted[233] ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[1] ; authentication:auth|voted[196] ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[1] ; authentication:auth|voted[36]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[1] ; authentication:auth|voted[20]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[71]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[73]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[74]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[75]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[72]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[81]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[82]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[83]  ; clock    ;
+; N/A                                     ; None                                                ; 39.600 ns  ; voter_id[4] ; authentication:auth|voted[80]  ; clock    ;
+; N/A                                     ; None                                                ; 39.500 ns  ; voter_id[3] ; authentication:auth|voted[6]   ; clock    ;
+; N/A                                     ; None                                                ; 39.500 ns  ; voter_id[0] ; authentication:auth|voted[137] ; clock    ;
+; N/A                                     ; None                                                ; 39.500 ns  ; voter_id[0] ; authentication:auth|voted[43]  ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[169] ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[163] ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[147] ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[179] ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[131] ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[227] ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[32]  ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[25]  ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[2] ; authentication:auth|voted[9]   ; clock    ;
+; N/A                                     ; None                                                ; 39.400 ns  ; voter_id[4] ; authentication:auth|voted[117] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[1] ; authentication:auth|voted[11]  ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[0] ; authentication:auth|voted[148] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[0] ; authentication:auth|voted[164] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[0] ; authentication:auth|voted[180] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[0] ; authentication:auth|voted[132] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[0] ; authentication:auth|voted[37]  ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[0] ; authentication:auth|voted[59]  ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[4] ; authentication:auth|voted[113] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[4] ; authentication:auth|voted[114] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[4] ; authentication:auth|voted[115] ; clock    ;
+; N/A                                     ; None                                                ; 39.300 ns  ; voter_id[4] ; authentication:auth|voted[112] ; clock    ;
+; N/A                                     ; None                                                ; 39.200 ns  ; voter_id[2] ; authentication:auth|voted[48]  ; clock    ;
+; N/A                                     ; None                                                ; 39.100 ns  ; voter_id[2] ; authentication:auth|voted[57]  ; clock    ;
+; N/A                                     ; None                                                ; 39.100 ns  ; voter_id[4] ; authentication:auth|voted[69]  ; clock    ;
+; N/A                                     ; None                                                ; 39.000 ns  ; voter_id[2] ; authentication:auth|voted[210] ; clock    ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;             ;                                ;          ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------+--------------------------------+----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; tco                                                                                                                                                                      ;
++-----------------------------------------+-----------------------------------------------------+------------+--------------------------------+---------------+------------+
+; Slack                                   ; Required tco                                        ; Actual tco ; From                           ; To            ; From Clock ;
++-----------------------------------------+-----------------------------------------------------+------------+--------------------------------+---------------+------------+
+; N/A                                     ; None                                                ; 86.100 ns  ; modeControl:MC|num[4]          ; digit0[0]     ; clock      ;
+; N/A                                     ; None                                                ; 85.800 ns  ; modeControl:MC|num[4]          ; digit0[5]     ; clock      ;
+; N/A                                     ; None                                                ; 85.700 ns  ; modeControl:MC|num[4]          ; digit1[3]     ; clock      ;
+; N/A                                     ; None                                                ; 85.000 ns  ; modeControl:MC|num[5]          ; digit1[3]     ; clock      ;
+; N/A                                     ; None                                                ; 85.000 ns  ; modeControl:MC|num[6]          ; digit1[3]     ; clock      ;
+; N/A                                     ; None                                                ; 84.600 ns  ; modeControl:MC|num[4]          ; digit1[1]     ; clock      ;
+; N/A                                     ; None                                                ; 84.400 ns  ; modeControl:MC|num[4]          ; digit1[6]     ; clock      ;
+; N/A                                     ; None                                                ; 84.300 ns  ; modeControl:MC|num[4]          ; digit1[0]     ; clock      ;
+; N/A                                     ; None                                                ; 84.200 ns  ; modeControl:MC|num[4]          ; digit0[6]     ; clock      ;
+; N/A                                     ; None                                                ; 84.000 ns  ; modeControl:MC|num[4]          ; digit0[3]     ; clock      ;
+; N/A                                     ; None                                                ; 84.000 ns  ; modeControl:MC|num[4]          ; digit0[1]     ; clock      ;
+; N/A                                     ; None                                                ; 83.900 ns  ; modeControl:MC|num[5]          ; digit1[1]     ; clock      ;
+; N/A                                     ; None                                                ; 83.900 ns  ; modeControl:MC|num[6]          ; digit1[1]     ; clock      ;
+; N/A                                     ; None                                                ; 83.900 ns  ; modeControl:MC|num[4]          ; digit0[4]     ; clock      ;
+; N/A                                     ; None                                                ; 83.700 ns  ; modeControl:MC|num[5]          ; digit1[6]     ; clock      ;
+; N/A                                     ; None                                                ; 83.700 ns  ; modeControl:MC|num[6]          ; digit1[6]     ; clock      ;
+; N/A                                     ; None                                                ; 83.600 ns  ; modeControl:MC|num[5]          ; digit1[0]     ; clock      ;
+; N/A                                     ; None                                                ; 83.600 ns  ; modeControl:MC|num[6]          ; digit1[0]     ; clock      ;
+; N/A                                     ; None                                                ; 82.700 ns  ; modeControl:MC|num[5]          ; digit0[0]     ; clock      ;
+; N/A                                     ; None                                                ; 82.400 ns  ; modeControl:MC|num[5]          ; digit0[5]     ; clock      ;
+; N/A                                     ; None                                                ; 81.400 ns  ; modeControl:MC|num[6]          ; digit0[0]     ; clock      ;
+; N/A                                     ; None                                                ; 81.300 ns  ; modeControl:MC|num[4]          ; digit0[2]     ; clock      ;
+; N/A                                     ; None                                                ; 81.200 ns  ; modeControl:MC|num[4]          ; digit1[5]     ; clock      ;
+; N/A                                     ; None                                                ; 81.200 ns  ; modeControl:MC|num[4]          ; digit1[4]     ; clock      ;
+; N/A                                     ; None                                                ; 81.200 ns  ; modeControl:MC|num[4]          ; digit1[2]     ; clock      ;
+; N/A                                     ; None                                                ; 81.100 ns  ; modeControl:MC|num[6]          ; digit0[5]     ; clock      ;
+; N/A                                     ; None                                                ; 80.800 ns  ; modeControl:MC|num[5]          ; digit0[6]     ; clock      ;
+; N/A                                     ; None                                                ; 80.600 ns  ; modeControl:MC|num[5]          ; digit0[3]     ; clock      ;
+; N/A                                     ; None                                                ; 80.600 ns  ; modeControl:MC|num[5]          ; digit0[1]     ; clock      ;
+; N/A                                     ; None                                                ; 80.500 ns  ; modeControl:MC|num[5]          ; digit1[5]     ; clock      ;
+; N/A                                     ; None                                                ; 80.500 ns  ; modeControl:MC|num[6]          ; digit1[5]     ; clock      ;
+; N/A                                     ; None                                                ; 80.500 ns  ; modeControl:MC|num[5]          ; digit1[4]     ; clock      ;
+; N/A                                     ; None                                                ; 80.500 ns  ; modeControl:MC|num[6]          ; digit1[4]     ; clock      ;
+; N/A                                     ; None                                                ; 80.500 ns  ; modeControl:MC|num[5]          ; digit1[2]     ; clock      ;
+; N/A                                     ; None                                                ; 80.500 ns  ; modeControl:MC|num[6]          ; digit1[2]     ; clock      ;
+; N/A                                     ; None                                                ; 80.500 ns  ; modeControl:MC|num[5]          ; digit0[4]     ; clock      ;
+; N/A                                     ; None                                                ; 79.500 ns  ; modeControl:MC|num[6]          ; digit0[6]     ; clock      ;
+; N/A                                     ; None                                                ; 79.300 ns  ; modeControl:MC|num[6]          ; digit0[3]     ; clock      ;
+; N/A                                     ; None                                                ; 79.300 ns  ; modeControl:MC|num[6]          ; digit0[1]     ; clock      ;
+; N/A                                     ; None                                                ; 79.200 ns  ; modeControl:MC|num[6]          ; digit0[4]     ; clock      ;
+; N/A                                     ; None                                                ; 77.900 ns  ; modeControl:MC|num[5]          ; digit0[2]     ; clock      ;
+; N/A                                     ; None                                                ; 76.800 ns  ; modeControl:MC|num[3]          ; digit0[0]     ; clock      ;
+; N/A                                     ; None                                                ; 76.600 ns  ; modeControl:MC|num[6]          ; digit0[2]     ; clock      ;
+; N/A                                     ; None                                                ; 76.500 ns  ; modeControl:MC|num[3]          ; digit0[5]     ; clock      ;
+; N/A                                     ; None                                                ; 74.900 ns  ; modeControl:MC|num[3]          ; digit0[6]     ; clock      ;
+; N/A                                     ; None                                                ; 74.700 ns  ; modeControl:MC|num[3]          ; digit0[3]     ; clock      ;
+; N/A                                     ; None                                                ; 74.700 ns  ; modeControl:MC|num[3]          ; digit0[1]     ; clock      ;
+; N/A                                     ; None                                                ; 74.600 ns  ; modeControl:MC|num[3]          ; digit0[4]     ; clock      ;
+; N/A                                     ; None                                                ; 72.000 ns  ; modeControl:MC|num[3]          ; digit0[2]     ; clock      ;
+; N/A                                     ; None                                                ; 71.200 ns  ; modeControl:MC|num[3]          ; digit1[3]     ; clock      ;
+; N/A                                     ; None                                                ; 70.100 ns  ; modeControl:MC|num[3]          ; digit1[1]     ; clock      ;
+; N/A                                     ; None                                                ; 69.900 ns  ; modeControl:MC|num[3]          ; digit1[6]     ; clock      ;
+; N/A                                     ; None                                                ; 69.800 ns  ; modeControl:MC|num[3]          ; digit1[0]     ; clock      ;
+; N/A                                     ; None                                                ; 66.700 ns  ; modeControl:MC|num[3]          ; digit1[5]     ; clock      ;
+; N/A                                     ; None                                                ; 66.700 ns  ; modeControl:MC|num[3]          ; digit1[4]     ; clock      ;
+; N/A                                     ; None                                                ; 66.700 ns  ; modeControl:MC|num[3]          ; digit1[2]     ; clock      ;
+; N/A                                     ; None                                                ; 57.100 ns  ; modeControl:MC|num[2]          ; digit1[3]     ; clock      ;
+; N/A                                     ; None                                                ; 56.200 ns  ; authentication:auth|voted[245] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 56.000 ns  ; modeControl:MC|num[2]          ; digit1[1]     ; clock      ;
+; N/A                                     ; None                                                ; 55.900 ns  ; authentication:auth|voted[247] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 55.900 ns  ; authentication:auth|voted[253] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 55.800 ns  ; modeControl:MC|num[2]          ; digit1[6]     ; clock      ;
+; N/A                                     ; None                                                ; 55.700 ns  ; modeControl:MC|num[2]          ; digit1[0]     ; clock      ;
+; N/A                                     ; None                                                ; 55.600 ns  ; authentication:auth|voted[255] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 55.000 ns  ; authentication:auth|voted[199] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 54.800 ns  ; modeControl:MC|num[2]          ; digit0[0]     ; clock      ;
+; N/A                                     ; None                                                ; 54.700 ns  ; authentication:auth|voted[207] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 54.500 ns  ; modeControl:MC|num[2]          ; digit0[5]     ; clock      ;
+; N/A                                     ; None                                                ; 54.400 ns  ; authentication:auth|voted[125] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 54.100 ns  ; authentication:auth|voted[127] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 53.700 ns  ; authentication:auth|voted[235] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 53.400 ns  ; authentication:auth|voted[239] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 53.300 ns  ; authentication:auth|voted[175] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 53.000 ns  ; authentication:auth|voted[121] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 53.000 ns  ; authentication:auth|voted[191] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 53.000 ns  ; authentication:auth|voted[246] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.900 ns  ; modeControl:MC|num[2]          ; digit0[6]     ; clock      ;
+; N/A                                     ; None                                                ; 52.800 ns  ; authentication:auth|voted[222] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.700 ns  ; modeControl:MC|num[2]          ; digit0[3]     ; clock      ;
+; N/A                                     ; None                                                ; 52.700 ns  ; modeControl:MC|num[2]          ; digit0[1]     ; clock      ;
+; N/A                                     ; None                                                ; 52.700 ns  ; authentication:auth|voted[123] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.700 ns  ; authentication:auth|voted[244] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.700 ns  ; authentication:auth|voted[254] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.700 ns  ; authentication:auth|voted[242] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.600 ns  ; modeControl:MC|num[2]          ; digit1[5]     ; clock      ;
+; N/A                                     ; None                                                ; 52.600 ns  ; modeControl:MC|num[2]          ; digit1[4]     ; clock      ;
+; N/A                                     ; None                                                ; 52.600 ns  ; modeControl:MC|num[2]          ; digit1[2]     ; clock      ;
+; N/A                                     ; None                                                ; 52.600 ns  ; modeControl:MC|num[2]          ; digit0[4]     ; clock      ;
+; N/A                                     ; None                                                ; 52.500 ns  ; authentication:auth|voted[110] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.500 ns  ; authentication:auth|voted[223] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.400 ns  ; authentication:auth|voted[97]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.400 ns  ; authentication:auth|voted[154] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.400 ns  ; authentication:auth|voted[252] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.400 ns  ; authentication:auth|voted[243] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.300 ns  ; authentication:auth|voted[167] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.200 ns  ; authentication:auth|voted[111] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.200 ns  ; authentication:auth|voted[174] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.100 ns  ; authentication:auth|voted[106] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.100 ns  ; authentication:auth|voted[99]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.100 ns  ; authentication:auth|voted[186] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 52.000 ns  ; authentication:auth|voted[183] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.900 ns  ; authentication:auth|voted[190] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.800 ns  ; authentication:auth|voted[107] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.800 ns  ; authentication:auth|voted[233] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.800 ns  ; authentication:auth|voted[200] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.800 ns  ; authentication:auth|voted[5]   ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.500 ns  ; authentication:auth|voted[118] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.500 ns  ; authentication:auth|voted[93]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.500 ns  ; authentication:auth|voted[237] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.500 ns  ; authentication:auth|voted[204] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.500 ns  ; authentication:auth|voted[7]   ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.400 ns  ; authentication:auth|voted[240] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.400 ns  ; authentication:auth|voted[26]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.300 ns  ; authentication:auth|voted[172] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.200 ns  ; authentication:auth|voted[95]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.200 ns  ; authentication:auth|voted[126] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.200 ns  ; authentication:auth|voted[78]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.100 ns  ; authentication:auth|voted[89]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.100 ns  ; authentication:auth|voted[173] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.100 ns  ; authentication:auth|voted[30]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.000 ns  ; authentication:auth|voted[188] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.000 ns  ; authentication:auth|voted[230] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.000 ns  ; authentication:auth|voted[229] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 51.000 ns  ; authentication:auth|voted[58]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.900 ns  ; authentication:auth|voted[124] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.900 ns  ; authentication:auth|voted[79]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.900 ns  ; authentication:auth|voted[217] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.900 ns  ; authentication:auth|voted[228] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.800 ns  ; authentication:auth|voted[91]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.800 ns  ; authentication:auth|voted[189] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.800 ns  ; authentication:auth|voted[250] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.800 ns  ; authentication:auth|voted[23]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.800 ns  ; authentication:auth|voted[10]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.700 ns  ; authentication:auth|voted[153] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.700 ns  ; authentication:auth|voted[209] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.700 ns  ; authentication:auth|voted[238] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.700 ns  ; authentication:auth|voted[202] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.700 ns  ; authentication:auth|voted[62]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.700 ns  ; authentication:auth|voted[55]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.600 ns  ; authentication:auth|voted[219] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.600 ns  ; authentication:auth|voted[225] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.600 ns  ; authentication:auth|voted[236] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.500 ns  ; authentication:auth|voted[231] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.500 ns  ; authentication:auth|voted[251] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.500 ns  ; authentication:auth|voted[31]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.500 ns  ; authentication:auth|voted[9]   ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.500 ns  ; authentication:auth|voted[11]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.400 ns  ; authentication:auth|voted[101] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.400 ns  ; authentication:auth|voted[185] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.400 ns  ; authentication:auth|voted[155] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.400 ns  ; authentication:auth|voted[211] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.400 ns  ; authentication:auth|voted[206] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.400 ns  ; authentication:auth|voted[63]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.200 ns  ; authentication:auth|voted[103] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.200 ns  ; authentication:auth|voted[227] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.100 ns  ; authentication:auth|voted[117] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.100 ns  ; authentication:auth|voted[187] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.100 ns  ; authentication:auth|voted[159] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.100 ns  ; authentication:auth|voted[53]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 50.000 ns  ; modeControl:MC|num[2]          ; digit0[2]     ; clock      ;
+; N/A                                     ; None                                                ; 50.000 ns  ; authentication:auth|voted[147] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.900 ns  ; authentication:auth|voted[119] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.900 ns  ; authentication:auth|voted[214] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.800 ns  ; authentication:auth|voted[122] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.800 ns  ; authentication:auth|voted[74]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.800 ns  ; authentication:auth|voted[143] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.800 ns  ; authentication:auth|voted[197] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.800 ns  ; authentication:auth|voted[61]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.700 ns  ; authentication:auth|voted[179] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.700 ns  ; authentication:auth|voted[19]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.600 ns  ; authentication:auth|voted[146] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.600 ns  ; authentication:auth|voted[215] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.600 ns  ; authentication:auth|voted[221] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[86]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[120] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[75]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[166] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[241] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[205] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[203] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.500 ns  ; authentication:auth|voted[51]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.300 ns  ; authentication:auth|voted[109] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.300 ns  ; authentication:auth|voted[178] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.300 ns  ; authentication:auth|voted[220] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.300 ns  ; authentication:auth|voted[13]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.200 ns  ; authentication:auth|voted[182] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.200 ns  ; authentication:auth|voted[170] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.200 ns  ; authentication:auth|voted[195] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.100 ns  ; authentication:auth|voted[151] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.100 ns  ; authentication:auth|voted[152] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.000 ns  ; authentication:auth|voted[108] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.000 ns  ; authentication:auth|voted[165] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.000 ns  ; authentication:auth|voted[158] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 49.000 ns  ; authentication:auth|voted[15]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 48.900 ns  ; authentication:auth|voted[71]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 48.900 ns  ; authentication:auth|voted[105] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 48.900 ns  ; authentication:auth|voted[138] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 48.800 ns  ; authentication:auth|voted[96]  ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 48.800 ns  ; authentication:auth|voted[135] ; already_voted ; clock      ;
+; N/A                                     ; None                                                ; 48.800 ns  ; authentication:auth|voted[184] ; already_voted ; clock      ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;                                ;               ;            ;
++-----------------------------------------+-----------------------------------------------------+------------+--------------------------------+---------------+------------+
+
+
++---------------------------------------------------------------------------+
+; tpd                                                                       ;
++-------+-------------------+-----------------+-------------+---------------+
+; Slack ; Required P2P Time ; Actual P2P Time ; From        ; To            ;
++-------+-------------------+-----------------+-------------+---------------+
+; N/A   ; None              ; 74.600 ns       ; voter_id[3] ; already_voted ;
+; N/A   ; None              ; 70.400 ns       ; voter_id[4] ; already_voted ;
+; N/A   ; None              ; 68.300 ns       ; voter_id[2] ; already_voted ;
+; N/A   ; None              ; 68.200 ns       ; voter_id[5] ; already_voted ;
+; N/A   ; None              ; 66.400 ns       ; voter_id[0] ; already_voted ;
+; N/A   ; None              ; 66.400 ns       ; voter_id[1] ; already_voted ;
+; N/A   ; None              ; 41.800 ns       ; voter_id[7] ; already_voted ;
+; N/A   ; None              ; 41.200 ns       ; voter_id[6] ; already_voted ;
+; N/A   ; None              ; 25.700 ns       ; mode        ; pollsigON     ;
+; N/A   ; None              ; 25.400 ns       ; mode        ; already_voted ;
+; N/A   ; None              ; 25.200 ns       ; pollsig     ; pollsigON     ;
++-------+-------------------+-----------------+-------------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; th                                                                                                                                                                                                                         ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------+--------------------------------------------------------------------------------------+----------+
+; Minimum Slack                           ; Required th                                         ; Actual th  ; From        ; To                                                                                   ; To Clock ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------+--------------------------------------------------------------------------------------+----------+
+; N/A                                     ; None                                                ; -5.000 ns  ; reset       ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[5] ; clock    ;
+; N/A                                     ; None                                                ; -5.000 ns  ; reset       ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[4] ; clock    ;
+; N/A                                     ; None                                                ; -5.000 ns  ; reset       ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[3] ; clock    ;
+; N/A                                     ; None                                                ; -5.000 ns  ; reset       ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[2] ; clock    ;
+; N/A                                     ; None                                                ; -5.000 ns  ; reset       ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[1] ; clock    ;
+; N/A                                     ; None                                                ; -5.000 ns  ; reset       ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[0] ; clock    ;
+; N/A                                     ; None                                                ; -5.000 ns  ; reset       ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[6] ; clock    ;
+; N/A                                     ; None                                                ; -5.100 ns  ; reset       ; modeControl:MC|num[6]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -5.600 ns  ; reset       ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[0] ; clock    ;
+; N/A                                     ; None                                                ; -5.600 ns  ; reset       ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[5] ; clock    ;
+; N/A                                     ; None                                                ; -5.600 ns  ; reset       ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[4] ; clock    ;
+; N/A                                     ; None                                                ; -5.600 ns  ; reset       ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[6] ; clock    ;
+; N/A                                     ; None                                                ; -5.600 ns  ; reset       ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[2] ; clock    ;
+; N/A                                     ; None                                                ; -6.200 ns  ; reset       ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[5] ; clock    ;
+; N/A                                     ; None                                                ; -6.200 ns  ; reset       ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[4] ; clock    ;
+; N/A                                     ; None                                                ; -6.200 ns  ; reset       ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[3] ; clock    ;
+; N/A                                     ; None                                                ; -6.200 ns  ; reset       ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[2] ; clock    ;
+; N/A                                     ; None                                                ; -6.200 ns  ; reset       ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[1] ; clock    ;
+; N/A                                     ; None                                                ; -6.200 ns  ; reset       ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[0] ; clock    ;
+; N/A                                     ; None                                                ; -6.200 ns  ; reset       ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[6] ; clock    ;
+; N/A                                     ; None                                                ; -6.600 ns  ; button1     ; modeControl:MC|num[3]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -6.600 ns  ; button1     ; modeControl:MC|num[1]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -6.600 ns  ; button1     ; modeControl:MC|num[0]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -6.700 ns  ; button1     ; modeControl:MC|num[4]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -6.900 ns  ; reset       ; modeControl:MC|num[2]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -6.900 ns  ; reset       ; modeControl:MC|num[5]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -9.300 ns  ; button1     ; modeControl:MC|num[6]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -9.500 ns  ; voter_id[2] ; authentication:auth|voted[127]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -9.500 ns  ; voter_id[2] ; authentication:auth|voted[124]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -9.600 ns  ; voter_id[2] ; authentication:auth|voted[94]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -9.600 ns  ; voter_id[2] ; authentication:auth|voted[93]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -9.900 ns  ; voter_id[1] ; authentication:auth|voted[127]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -9.900 ns  ; voter_id[1] ; authentication:auth|voted[124]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -10.000 ns ; voter_id[1] ; authentication:auth|voted[94]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -10.000 ns ; voter_id[1] ; authentication:auth|voted[93]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -10.100 ns ; button1     ; modeControl:MC|num[2]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -10.100 ns ; button1     ; modeControl:MC|num[5]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -10.100 ns ; mode        ; modeControl:MC|num[6]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -10.200 ns ; voter_id[0] ; authentication:auth|voted[127]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -10.200 ns ; voter_id[0] ; authentication:auth|voted[124]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -10.300 ns ; voter_id[0] ; authentication:auth|voted[94]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -10.300 ns ; voter_id[0] ; authentication:auth|voted[93]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -10.400 ns ; mode        ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[5] ; clock    ;
+; N/A                                     ; None                                                ; -10.400 ns ; mode        ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[4] ; clock    ;
+; N/A                                     ; None                                                ; -10.400 ns ; mode        ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[3] ; clock    ;
+; N/A                                     ; None                                                ; -10.400 ns ; mode        ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[2] ; clock    ;
+; N/A                                     ; None                                                ; -10.400 ns ; mode        ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[1] ; clock    ;
+; N/A                                     ; None                                                ; -10.400 ns ; mode        ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[0] ; clock    ;
+; N/A                                     ; None                                                ; -10.400 ns ; mode        ; voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[6] ; clock    ;
+; N/A                                     ; None                                                ; -10.500 ns ; mode        ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[0] ; clock    ;
+; N/A                                     ; None                                                ; -10.500 ns ; mode        ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[5] ; clock    ;
+; N/A                                     ; None                                                ; -10.500 ns ; mode        ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[4] ; clock    ;
+; N/A                                     ; None                                                ; -10.500 ns ; mode        ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[6] ; clock    ;
+; N/A                                     ; None                                                ; -10.500 ns ; mode        ; voteLogger:VL|lpm_counter:cand1_vote_recvd_rtl_0|alt_counter_f10ke:wysi_counter|q[2] ; clock    ;
+; N/A                                     ; None                                                ; -10.700 ns ; pollsig     ; buttonControl:bc3|counter[19]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -10.700 ns ; pollsig     ; buttonControl:bc3|counter[5]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -10.700 ns ; pollsig     ; buttonControl:bc3|counter[7]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -10.700 ns ; pollsig     ; buttonControl:bc3|counter[8]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -10.700 ns ; pollsig     ; buttonControl:bc3|counter[9]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -10.800 ns ; mode        ; modeControl:MC|num[2]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -10.800 ns ; mode        ; modeControl:MC|num[5]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -10.900 ns ; mode        ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[5] ; clock    ;
+; N/A                                     ; None                                                ; -10.900 ns ; mode        ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[4] ; clock    ;
+; N/A                                     ; None                                                ; -10.900 ns ; mode        ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[3] ; clock    ;
+; N/A                                     ; None                                                ; -10.900 ns ; mode        ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[2] ; clock    ;
+; N/A                                     ; None                                                ; -10.900 ns ; mode        ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[1] ; clock    ;
+; N/A                                     ; None                                                ; -10.900 ns ; mode        ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[0] ; clock    ;
+; N/A                                     ; None                                                ; -10.900 ns ; mode        ; voteLogger:VL|lpm_counter:cand2_vote_recvd_rtl_1|alt_counter_f10ke:wysi_counter|q[6] ; clock    ;
+; N/A                                     ; None                                                ; -11.100 ns ; mode        ; buttonControl:bc3|counter[19]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -11.100 ns ; mode        ; buttonControl:bc3|counter[5]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -11.100 ns ; mode        ; buttonControl:bc3|counter[7]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -11.100 ns ; mode        ; buttonControl:bc3|counter[8]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -11.100 ns ; mode        ; buttonControl:bc3|counter[9]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -11.800 ns ; voter_id[2] ; authentication:auth|voted[92]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -11.800 ns ; voter_id[2] ; authentication:auth|voted[76]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -11.900 ns ; voter_id[2] ; authentication:auth|voted[95]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.000 ns ; voter_id[2] ; authentication:auth|voted[126]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.000 ns ; voter_id[2] ; authentication:auth|voted[125]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.000 ns ; voter_id[2] ; authentication:auth|voted[77]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.000 ns ; voter_id[2] ; authentication:auth|voted[79]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.100 ns ; pollsig     ; buttonControl:bc1|counter[5]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.100 ns ; pollsig     ; buttonControl:bc1|counter[7]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.100 ns ; pollsig     ; buttonControl:bc1|counter[8]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.100 ns ; pollsig     ; buttonControl:bc1|counter[9]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.100 ns ; pollsig     ; buttonControl:bc1|counter[10]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.100 ns ; pollsig     ; buttonControl:bc1|counter[17]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.100 ns ; voter_id[2] ; authentication:auth|voted[78]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.200 ns ; button1     ; buttonControl:bc1|counter[11]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.200 ns ; button1     ; buttonControl:bc1|counter[12]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.200 ns ; button1     ; buttonControl:bc1|counter[13]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.200 ns ; button1     ; buttonControl:bc1|counter[14]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.200 ns ; button1     ; buttonControl:bc1|counter[16]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.200 ns ; voter_id[1] ; authentication:auth|voted[92]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.200 ns ; voter_id[1] ; authentication:auth|voted[76]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.300 ns ; mode        ; buttonControl:bc1|counter[5]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.300 ns ; mode        ; buttonControl:bc1|counter[7]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.300 ns ; mode        ; buttonControl:bc1|counter[8]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.300 ns ; mode        ; buttonControl:bc1|counter[9]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.300 ns ; mode        ; buttonControl:bc1|counter[10]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.300 ns ; mode        ; buttonControl:bc1|counter[17]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.300 ns ; voter_id[1] ; authentication:auth|voted[95]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.400 ns ; voter_id[1] ; authentication:auth|voted[126]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.400 ns ; voter_id[1] ; authentication:auth|voted[125]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.400 ns ; voter_id[1] ; authentication:auth|voted[77]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.400 ns ; voter_id[1] ; authentication:auth|voted[79]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.400 ns ; voter_id[1] ; authentication:auth|voted[65]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.400 ns ; voter_id[1] ; authentication:auth|voted[64]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; button2     ; buttonControl:bc2|counter[18]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; button2     ; buttonControl:bc2|counter[19]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; button2     ; buttonControl:bc2|counter[20]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; button2     ; buttonControl:bc2|counter[21]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; button2     ; buttonControl:bc2|counter[5]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; button2     ; buttonControl:bc2|counter[6]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[3] ; authentication:auth|voted[65]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[3] ; authentication:auth|voted[64]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[1] ; authentication:auth|voted[78]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[1] ; authentication:auth|voted[82]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[1] ; authentication:auth|voted[83]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[0] ; authentication:auth|voted[92]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[0] ; authentication:auth|voted[76]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.500 ns ; voter_id[7] ; authentication:auth|voted[100]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.600 ns ; voter_id[3] ; authentication:auth|voted[82]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.600 ns ; voter_id[3] ; authentication:auth|voted[83]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.600 ns ; voter_id[0] ; authentication:auth|voted[95]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.700 ns ; voter_id[0] ; authentication:auth|voted[126]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.700 ns ; voter_id[0] ; authentication:auth|voted[125]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.700 ns ; voter_id[0] ; authentication:auth|voted[77]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.700 ns ; voter_id[0] ; authentication:auth|voted[79]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; pollsig     ; buttonControl:bc2|counter[3]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; pollsig     ; buttonControl:bc2|counter[7]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; pollsig     ; buttonControl:bc2|counter[8]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; pollsig     ; buttonControl:bc2|counter[9]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; pollsig     ; buttonControl:bc2|counter[10]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; voter_id[3] ; authentication:auth|voted[94]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; voter_id[3] ; authentication:auth|voted[93]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; voter_id[3] ; authentication:auth|voted[127]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; voter_id[3] ; authentication:auth|voted[124]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -12.800 ns ; voter_id[0] ; authentication:auth|voted[78]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.100 ns ; voter_id[4] ; authentication:auth|voted[100]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -13.200 ns ; mode        ; buttonControl:bc2|counter[3]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.200 ns ; mode        ; buttonControl:bc2|counter[7]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.200 ns ; mode        ; buttonControl:bc2|counter[8]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.200 ns ; mode        ; buttonControl:bc2|counter[9]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.200 ns ; mode        ; buttonControl:bc2|counter[10]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.400 ns ; pollsig     ; buttonControl:bc3|counter[18]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.400 ns ; pollsig     ; buttonControl:bc3|counter[20]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.400 ns ; pollsig     ; buttonControl:bc3|counter[21]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.400 ns ; pollsig     ; buttonControl:bc3|counter[10]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.400 ns ; pollsig     ; buttonControl:bc3|counter[16]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.400 ns ; pollsig     ; buttonControl:bc3|counter[17]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.500 ns ; pollsig     ; buttonControl:bc3|counter[4]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[23]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[2]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[1]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[3]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[11]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[12]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[13]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[14]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[6]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -13.600 ns ; pollsig     ; buttonControl:bc3|counter[15]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.700 ns ; mode        ; modeControl:MC|num[4]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -13.800 ns ; mode        ; buttonControl:bc3|counter[18]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.800 ns ; mode        ; buttonControl:bc3|counter[20]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.800 ns ; mode        ; buttonControl:bc3|counter[21]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.800 ns ; mode        ; buttonControl:bc3|counter[10]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.800 ns ; mode        ; buttonControl:bc3|counter[16]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.800 ns ; mode        ; buttonControl:bc3|counter[17]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.800 ns ; voter_id[6] ; authentication:auth|voted[100]                                                       ; clock    ;
+; N/A                                     ; None                                                ; -13.900 ns ; pollsig     ; buttonControl:bc3|counter[22]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.900 ns ; pollsig     ; buttonControl:bc3|counter[24]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -13.900 ns ; mode        ; modeControl:MC|num[3]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -13.900 ns ; mode        ; modeControl:MC|num[1]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -13.900 ns ; mode        ; modeControl:MC|num[0]                                                                ; clock    ;
+; N/A                                     ; None                                                ; -13.900 ns ; mode        ; buttonControl:bc3|counter[4]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; button3     ; buttonControl:bc3|counter[11]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; button3     ; buttonControl:bc3|counter[12]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; button3     ; buttonControl:bc3|counter[13]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; button3     ; buttonControl:bc3|counter[14]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; button3     ; buttonControl:bc3|counter[6]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; button3     ; buttonControl:bc3|counter[15]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[23]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[2]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[1]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[3]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[11]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[12]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[13]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[14]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[6]                                                         ; clock    ;
+; N/A                                     ; None                                                ; -14.000 ns ; mode        ; buttonControl:bc3|counter[15]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.300 ns ; mode        ; buttonControl:bc3|counter[22]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.300 ns ; mode        ; buttonControl:bc3|counter[24]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.400 ns ; voter_id[0] ; authentication:auth|voted[82]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.400 ns ; voter_id[0] ; authentication:auth|voted[83]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.500 ns ; voter_id[0] ; authentication:auth|voted[65]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.500 ns ; voter_id[0] ; authentication:auth|voted[64]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.600 ns ; pollsig     ; buttonControl:bc1|counter[18]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.600 ns ; pollsig     ; buttonControl:bc1|counter[19]                                                        ; clock    ;
+; N/A                                     ; None                                                ; -14.600 ns ; pollsig     ; buttonControl:bc1|counter[20]                                                        ; clock    ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;             ;                                                                                      ;          ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------+--------------------------------------------------------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 8.1 Build 163 10/28/2008 SJ Web Edition
+    Info: Processing started: Sun Sep 10 18:39:48 2023
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off votingMachine -c votingMachine
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "clock" is an undefined clock
+Info: Clock "clock" has Internal fmax of 20.37 MHz between source register "authentication:auth|voted[245]" and destination register "buttonControl:bc3|valid_vote" (period= 49.1 ns)
+    Info: + Longest register to register delay is 45.100 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC3_D43; Fanout = 2; REG Node = 'authentication:auth|voted[245]'
+        Info: 2: + IC(0.500 ns) + CELL(2.700 ns) = 3.200 ns; Loc. = LC6_D43; Fanout = 1; COMB Node = 'Mux0~504'
+        Info: 3: + IC(0.500 ns) + CELL(2.700 ns) = 6.400 ns; Loc. = LC1_D43; Fanout = 1; COMB Node = 'Mux0~505'
+        Info: 4: + IC(2.700 ns) + CELL(2.700 ns) = 11.800 ns; Loc. = LC8_D42; Fanout = 1; COMB Node = 'Mux0~508'
+        Info: 5: + IC(0.500 ns) + CELL(2.700 ns) = 15.000 ns; Loc. = LC2_D42; Fanout = 1; COMB Node = 'Mux0~511'
+        Info: 6: + IC(3.000 ns) + CELL(2.400 ns) = 20.400 ns; Loc. = LC8_D27; Fanout = 1; COMB Node = 'Mux0~512'
+        Info: 7: + IC(0.500 ns) + CELL(2.700 ns) = 23.600 ns; Loc. = LC1_D27; Fanout = 1; COMB Node = 'Mux0~523'
+        Info: 8: + IC(2.700 ns) + CELL(2.400 ns) = 28.700 ns; Loc. = LC8_D26; Fanout = 1; COMB Node = 'Mux0~524'
+        Info: 9: + IC(0.500 ns) + CELL(2.700 ns) = 31.900 ns; Loc. = LC1_D26; Fanout = 4; COMB Node = 'Mux0~567'
+        Info: 10: + IC(5.100 ns) + CELL(2.700 ns) = 39.700 ns; Loc. = LC3_G26; Fanout = 1; COMB Node = 'buttonControl:bc3|valid_vote~175'
+        Info: 11: + IC(0.500 ns) + CELL(2.700 ns) = 42.900 ns; Loc. = LC5_G26; Fanout = 1; COMB Node = 'buttonControl:bc3|valid_vote~177'
+        Info: 12: + IC(0.500 ns) + CELL(1.700 ns) = 45.100 ns; Loc. = LC2_G26; Fanout = 20; REG Node = 'buttonControl:bc3|valid_vote'
+        Info: Total cell delay = 28.100 ns ( 62.31 % )
+        Info: Total interconnect delay = 17.000 ns ( 37.69 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "clock" to destination register is 7.000 ns
+            Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 360; CLK Node = 'clock'
+            Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC2_G26; Fanout = 20; REG Node = 'buttonControl:bc3|valid_vote'
+            Info: Total cell delay = 2.900 ns ( 41.43 % )
+            Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+        Info: - Longest clock path from clock "clock" to source register is 7.000 ns
+            Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 360; CLK Node = 'clock'
+            Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC3_D43; Fanout = 2; REG Node = 'authentication:auth|voted[245]'
+            Info: Total cell delay = 2.900 ns ( 41.43 % )
+            Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+    Info: + Micro clock to output delay of source is 1.400 ns
+    Info: + Micro setup delay of destination is 2.600 ns
+Info: tsu for register "buttonControl:bc3|valid_vote" (data pin = "voter_id[3]", clock pin = "clock") is 67.500 ns
+    Info: + Longest pin to register delay is 71.900 ns
+        Info: 1: + IC(0.000 ns) + CELL(10.300 ns) = 10.300 ns; Loc. = PIN_36; Fanout = 58; PIN Node = 'voter_id[3]'
+        Info: 2: + IC(18.200 ns) + CELL(2.700 ns) = 31.200 ns; Loc. = LC1_D19; Fanout = 1; COMB Node = 'Mux0~517'
+        Info: 3: + IC(2.800 ns) + CELL(2.700 ns) = 36.700 ns; Loc. = LC8_D20; Fanout = 1; COMB Node = 'Mux0~518'
+        Info: 4: + IC(2.800 ns) + CELL(2.400 ns) = 41.900 ns; Loc. = LC8_D21; Fanout = 1; COMB Node = 'Mux0~519'
+        Info: 5: + IC(0.500 ns) + CELL(2.700 ns) = 45.100 ns; Loc. = LC4_D21; Fanout = 1; COMB Node = 'Mux0~522'
+        Info: 6: + IC(2.900 ns) + CELL(2.400 ns) = 50.400 ns; Loc. = LC1_D27; Fanout = 1; COMB Node = 'Mux0~523'
+        Info: 7: + IC(2.700 ns) + CELL(2.400 ns) = 55.500 ns; Loc. = LC8_D26; Fanout = 1; COMB Node = 'Mux0~524'
+        Info: 8: + IC(0.500 ns) + CELL(2.700 ns) = 58.700 ns; Loc. = LC1_D26; Fanout = 4; COMB Node = 'Mux0~567'
+        Info: 9: + IC(5.100 ns) + CELL(2.700 ns) = 66.500 ns; Loc. = LC3_G26; Fanout = 1; COMB Node = 'buttonControl:bc3|valid_vote~175'
+        Info: 10: + IC(0.500 ns) + CELL(2.700 ns) = 69.700 ns; Loc. = LC5_G26; Fanout = 1; COMB Node = 'buttonControl:bc3|valid_vote~177'
+        Info: 11: + IC(0.500 ns) + CELL(1.700 ns) = 71.900 ns; Loc. = LC2_G26; Fanout = 20; REG Node = 'buttonControl:bc3|valid_vote'
+        Info: Total cell delay = 35.400 ns ( 49.24 % )
+        Info: Total interconnect delay = 36.500 ns ( 50.76 % )
+    Info: + Micro setup delay of destination is 2.600 ns
+    Info: - Shortest clock path from clock "clock" to destination register is 7.000 ns
+        Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 360; CLK Node = 'clock'
+        Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC2_G26; Fanout = 20; REG Node = 'buttonControl:bc3|valid_vote'
+        Info: Total cell delay = 2.900 ns ( 41.43 % )
+        Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+Info: tco from clock "clock" to destination pin "digit0[0]" through register "modeControl:MC|num[4]" is 86.100 ns
+    Info: + Longest clock path from clock "clock" to source register is 7.000 ns
+        Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 360; CLK Node = 'clock'
+        Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC2_I4; Fanout = 10; REG Node = 'modeControl:MC|num[4]'
+        Info: Total cell delay = 2.900 ns ( 41.43 % )
+        Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+    Info: + Micro clock to output delay of source is 1.400 ns
+    Info: + Longest register to pin delay is 77.700 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC2_I4; Fanout = 10; REG Node = 'modeControl:MC|num[4]'
+        Info: 2: + IC(5.100 ns) + CELL(2.400 ns) = 7.500 ns; Loc. = LC5_I43; Fanout = 2; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_d9c:add_sub_3|add_sub_cella[1]~51'
+        Info: 3: + IC(0.500 ns) + CELL(2.400 ns) = 10.400 ns; Loc. = LC7_I43; Fanout = 2; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_d9c:add_sub_3|add_sub_cella[2]~63'
+        Info: 4: + IC(0.500 ns) + CELL(2.400 ns) = 13.300 ns; Loc. = LC3_I43; Fanout = 8; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_d9c:add_sub_3|add_sub_cella[3]~57'
+        Info: 5: + IC(3.200 ns) + CELL(2.700 ns) = 19.200 ns; Loc. = LC6_I31; Fanout = 2; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_4|add_sub_cella[2]~111'
+        Info: 6: + IC(2.700 ns) + CELL(2.400 ns) = 24.300 ns; Loc. = LC6_I32; Fanout = 1; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_4|add_sub_cella[3]~119'
+        Info: 7: + IC(0.500 ns) + CELL(2.400 ns) = 27.200 ns; Loc. = LC2_I32; Fanout = 8; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_4|add_sub_cella[4]~99'
+        Info: 8: + IC(2.800 ns) + CELL(2.700 ns) = 32.700 ns; Loc. = LC2_I31; Fanout = 2; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|StageOut[22]~529'
+        Info: 9: + IC(2.900 ns) + CELL(1.400 ns) = 37.000 ns; Loc. = LC3_I38; Fanout = 1; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_5|add_sub_cella[3]~COUT'
+        Info: 10: + IC(0.000 ns) + CELL(0.300 ns) = 37.300 ns; Loc. = LC4_I38; Fanout = 1; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_5|cout'
+        Info: 11: + IC(0.000 ns) + CELL(1.200 ns) = 38.500 ns; Loc. = LC5_I38; Fanout = 7; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_5|add_sub_cella[4]~149'
+        Info: 12: + IC(3.400 ns) + CELL(2.700 ns) = 44.600 ns; Loc. = LC2_I48; Fanout = 2; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|StageOut[26]~525'
+        Info: 13: + IC(2.700 ns) + CELL(1.400 ns) = 48.700 ns; Loc. = LC2_I49; Fanout = 2; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_6|add_sub_cella[2]~COUT'
+        Info: 14: + IC(0.000 ns) + CELL(0.300 ns) = 49.000 ns; Loc. = LC3_I49; Fanout = 1; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_6|add_sub_cella[3]~COUT'
+        Info: 15: + IC(0.000 ns) + CELL(0.300 ns) = 49.300 ns; Loc. = LC4_I49; Fanout = 1; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_6|cout'
+        Info: 16: + IC(0.000 ns) + CELL(1.200 ns) = 50.500 ns; Loc. = LC5_I49; Fanout = 8; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|add_sub_e9c:add_sub_6|add_sub_cella[4]~155'
+        Info: 17: + IC(2.900 ns) + CELL(2.700 ns) = 56.100 ns; Loc. = LC2_I40; Fanout = 4; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|lpm_divide:Mod0|lpm_divide_kpl:auto_generated|sign_div_unsign_6kh:divider|alt_u_div_eke:divider|StageOut[32]~515'
+        Info: 18: + IC(2.800 ns) + CELL(2.700 ns) = 61.600 ns; Loc. = LC1_I36; Fanout = 1; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|Mux13~9'
+        Info: 19: + IC(2.800 ns) + CELL(2.400 ns) = 66.800 ns; Loc. = LC7_I29; Fanout = 1; COMB Node = 'modeControl:MC|digitsDisplay:display_votes|digit0[0]~330'
+        Info: 20: + IC(5.900 ns) + CELL(5.000 ns) = 77.700 ns; Loc. = PIN_24; Fanout = 0; PIN Node = 'digit0[0]'
+        Info: Total cell delay = 39.000 ns ( 50.19 % )
+        Info: Total interconnect delay = 38.700 ns ( 49.81 % )
+Info: Longest tpd from source pin "voter_id[3]" to destination pin "already_voted" is 74.600 ns
+    Info: 1: + IC(0.000 ns) + CELL(10.300 ns) = 10.300 ns; Loc. = PIN_36; Fanout = 58; PIN Node = 'voter_id[3]'
+    Info: 2: + IC(18.200 ns) + CELL(2.700 ns) = 31.200 ns; Loc. = LC1_D19; Fanout = 1; COMB Node = 'Mux0~517'
+    Info: 3: + IC(2.800 ns) + CELL(2.700 ns) = 36.700 ns; Loc. = LC8_D20; Fanout = 1; COMB Node = 'Mux0~518'
+    Info: 4: + IC(2.800 ns) + CELL(2.400 ns) = 41.900 ns; Loc. = LC8_D21; Fanout = 1; COMB Node = 'Mux0~519'
+    Info: 5: + IC(0.500 ns) + CELL(2.700 ns) = 45.100 ns; Loc. = LC4_D21; Fanout = 1; COMB Node = 'Mux0~522'
+    Info: 6: + IC(2.900 ns) + CELL(2.400 ns) = 50.400 ns; Loc. = LC1_D27; Fanout = 1; COMB Node = 'Mux0~523'
+    Info: 7: + IC(2.700 ns) + CELL(2.400 ns) = 55.500 ns; Loc. = LC8_D26; Fanout = 1; COMB Node = 'Mux0~524'
+    Info: 8: + IC(0.500 ns) + CELL(2.700 ns) = 58.700 ns; Loc. = LC1_D26; Fanout = 4; COMB Node = 'Mux0~567'
+    Info: 9: + IC(5.700 ns) + CELL(2.700 ns) = 67.100 ns; Loc. = LC1_H9; Fanout = 1; COMB Node = 'already_voted~0'
+    Info: 10: + IC(2.500 ns) + CELL(5.000 ns) = 74.600 ns; Loc. = PIN_137; Fanout = 0; PIN Node = 'already_voted'
+    Info: Total cell delay = 36.000 ns ( 48.26 % )
+    Info: Total interconnect delay = 38.600 ns ( 51.74 % )
+Info: th for register "voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[5]" (data pin = "reset", clock pin = "clock") is -5.000 ns
+    Info: + Longest clock path from clock "clock" to destination register is 7.000 ns
+        Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 360; CLK Node = 'clock'
+        Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC6_I3; Fanout = 4; REG Node = 'voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[5]'
+        Info: Total cell delay = 2.900 ns ( 41.43 % )
+        Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+    Info: + Micro hold delay of destination is 3.100 ns
+    Info: - Shortest pin to register delay is 15.100 ns
+        Info: 1: + IC(0.000 ns) + CELL(10.300 ns) = 10.300 ns; Loc. = PIN_127; Fanout = 288; PIN Node = 'reset'
+        Info: 2: + IC(2.800 ns) + CELL(2.000 ns) = 15.100 ns; Loc. = LC6_I3; Fanout = 4; REG Node = 'voteLogger:VL|lpm_counter:cand3_vote_recvd_rtl_2|alt_counter_f10ke:wysi_counter|q[5]'
+        Info: Total cell delay = 12.300 ns ( 81.46 % )
+        Info: Total interconnect delay = 2.800 ns ( 18.54 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 184 megabytes
+    Info: Processing ended: Sun Sep 10 18:39:49 2023
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
